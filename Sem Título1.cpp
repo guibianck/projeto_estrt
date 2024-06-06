@@ -64,15 +64,15 @@ void imprimir_vetor(const vector<int> &arr) {
 }
 
 // Função para salvar o vetor ordenado em um arquivo
-void salvar_vetor(const vector<int> &arr, const string &nomeArquivo) {
-    ofstream arquivoSaida(nomeArquivo);
-    if (arquivoSaida.is_open()) {
+void salvar_vetor(const vector<int> &arr, const string &nome_arquivo) {
+    ofstream arquivo_saida(nome_arquivo);
+    if (arquivo_saida.is_open()) {
         for (int num : arr) {
-            arquivoSaida << num << " ";
+            arquivo_saida << num << " ";
         }
-        arquivoSaida.close();
+        arquivo_saida.close();
     } else {
-        cerr << "Erro ao abrir o arquivo " << nomeArquivo << " para escrita." << endl;
+        cerr << "Erro ao abrir o arquivo " << nome_arquivo << endl;
     }
 }
 

@@ -6,6 +6,7 @@
 using namespace std;
 using namespace chrono;
 
+//ATENÇÃO, PARA RODAR O CÓDIGO A SEGUIR É NECESSÁRIO USAR UMA VERSÃO DE COMPILADOR QUE SUPORTE A ISO C++ 2011, ALGUMAS BIBLIOTECAS SÓ FUNCIONAM NESSA VERSÃO!!!!!!!!!!!!!!
 // Funções de ordenação
 
 void bubbleSort(vector<int> &arr) {

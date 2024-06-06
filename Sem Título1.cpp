@@ -56,7 +56,7 @@ void quickSort(vector<int> &arr, int menor, int maior) {
 }
 
 // Função para imprimir o vetor
-void imprimirVetor(const vector<int> &arr) {
+void imprimir_vetor(const vector<int> &arr) {
     for (int num : arr) {
         cout << num << " ";
     }
@@ -64,41 +64,41 @@ void imprimirVetor(const vector<int> &arr) {
 }
 
 // Função para salvar o vetor ordenado em um arquivo
-void salvarVetor(const vector<int> &arr, const string &filename) {
-    ofstream outputFile(filename);
-    if (outputFile.is_open()) {
+void salvar_vetor(const vector<int> &arr, const string &nomeArquivo) {
+    ofstream arquivoSaida(nomeArquivo);
+    if (arquivoSaida.is_open()) {
         for (int num : arr) {
-            outputFile << num << " ";
+            arquivoSaida << num << " ";
         }
-        outputFile.close();
+        arquivoSaida.close();
     } else {
-        cerr << "Erro ao abrir o arquivo " << filename << " para escrita." << endl;
+        cerr << "Erro ao abrir o arquivo " << nomeArquivo << " para escrita." << endl;
     }
 }
 
 int main() {
-    string filename;
+    string nome_arquivo;
     cout << "Digite o nome do arquivo de entrada: ";
-    cin >> filename;
+    cin >> nome_arquivo;
 
-    ifstream inputFile(filename);
-    if (!inputFile) {
-        cerr << "Erro ao abrir o arquivo " << filename << endl;
+    ifstream arquivo_entrada(nome_arquivo);
+    if (!arquivo_entrada) {
+        cerr << "Erro ao abrir o arquivo " << nome_arquivo << endl;
         return 1;
     }
 
     vector<int> arr;
-    int number;
-    while (inputFile >> number) {
-        arr.push_back(number);
+    int numero;
+    while (arquivo_entrada >> numero) {
+        arr.push_back(numero);
     }
-    inputFile.close();
+    arquivo_entrada.close();
 
     cout << "Escolha o método de ordenação: \n1. Bubble Sort \n2. Insertion Sort \n3. Quick Sort\n";
     int escolha;
     cin >> escolha;
 
-    auto start = high_resolution_clock::now();
+    auto inicio = high_resolution_clock::now();
 
     switch (escolha) {
         case 1:
@@ -115,15 +115,15 @@ int main() {
             return 1;
     }
 
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(stop - start);
+    auto fim = high_resolution_clock::now();
+    auto duracao = duration_cast<milliseconds>(fim - inicio);
 
     cout << "Vetor ordenado:\n";
-    imprimirVetor(arr);
+    imprimir_vetor(arr);
 
-    cout << "Tempo de execução da ordenação: " << duration.count() << " milissegundos\n";
+    cout << "Tempo de execução da ordenação: " << duracao.count() << " milissegundos\n";
 
-    salvarVetor(arr, "vetor_ordenado.txt");
+    salvar_vetor(arr, "vetor_ordenado.txt");
     cout << "Vetor ordenado salvo em 'vetor_ordenado.txt'.\n";
 
     return 0;
